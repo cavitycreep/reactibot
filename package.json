@@ -1,0 +1,9 @@
+{
+  "name": "reactibot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:cavitycreep/reactibot.git",
+  "author": "Chance G <cavitycreep8178@gmail.com>",
+  "license": "MIT",
+  "private": false
+}
