@@ -11,5 +11,8 @@
     "dotenv": "^8.2.0",
     "google-spreadsheet": "^3.0.11",
     "moment": "^2.26.0"
+  },
+  "scripts": {
+    "start": "node index.js"
   }
 }
