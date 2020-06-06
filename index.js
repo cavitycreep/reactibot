@@ -44,7 +44,10 @@ const getSource = (message, sources) => sources.find(({name}) => message.toLower
 const openSheet = async () => {
   console.log("Opening sheet");
   const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID);
-  await doc.useServiceAccountAuth(require('./google.json'));
+  await doc.useServiceAccountAuth({
+    private_key: process.env.GOOGLE_PRIVATE_KEY,
+    client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+  });
   await doc.loadInfo();
   return doc;
 }
