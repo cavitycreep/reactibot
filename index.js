@@ -53,6 +53,8 @@ const openSheet = async () => {
 }
 
 const main = async () => {
+  const express = require('express');
+  const app = express();
   const client = new Discord.Client();
   const doc = await openSheet();
   let lastUpdate = moment().unix();
@@ -88,6 +90,7 @@ const main = async () => {
   });
 
   client.login(process.env.DISCORD_TOKEN);
+  app.listen(process.env.PORT || 8080);
 };
 
 main().catch((e) => console.error(e));
