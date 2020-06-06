@@ -72,7 +72,8 @@ const main = async () => {
   });
 
   client.on('message', async (message) => {
-    if(message.channel.name === "link-publishing") {
+    if(message.channel.name === "link-publishing"
+      || message.channel.name === "links-with-embeds") {
       console.log("Incoming message");
 
       const timeToUpdate = moment(lastUpdate).add(1, "minute");
