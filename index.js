@@ -39,7 +39,12 @@ const parseSheet = async (doc) => {
   return parseNames(rows);
 }
 
-const getSource = (message, sources) => sources.find(({name}) => message.toLowerCase().includes(name));
+const getSource = (message, sources) => sources.find(({name}) => {
+  const lowerMessage = message.toLowerCase();
+  const withSpaces = lowerMessage.includes(name);
+  const withoutSpaces = lowerMessage.includes(name.replace(" ", ""));
+  return withSpaces || withoutSpaces;
+});
 
 const openSheet = async () => {
   console.log("Opening sheet");
