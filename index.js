@@ -75,10 +75,11 @@ const main = async () => {
     if(message.channel.name === "link-publishing") {
       console.log("Incoming message");
 
-      const updateTime = moment(lastUpdate).add(1, "minute");
-      const needsToUpdate = updateTime.isSameOrAfter();
+      const timeToUpdate = moment(lastUpdate).add(1, "minute");
+      const needsToUpdate = moment().isAfter(timeToUpdate);
 
       if(needsToUpdate) {
+        lastUpdate = moment().unix();
         sources = await parseSheet(doc);
       }
 
