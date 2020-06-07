@@ -48,12 +48,14 @@ module.exports = class Sources {
         const contentWithoutSpaces = lowerContent.startsWith(name.replace(" ", ""));
         return contentWithSpaces || contentWithoutSpaces;
       });
-      source.React = async (message) => {
-        Promise.all([
-          message.react("🎖"),
-          message.react(source.reaction),
-        ]);
-      };
+      if(source) {
+        source.React = async (message) => {
+          Promise.all([
+            message.react("🎖"),
+            message.react(source.reaction),
+          ]);
+        };
+      }
       return source;
     }
   }

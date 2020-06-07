@@ -16,10 +16,11 @@ module.exports = class ReactionsController {
 
   async HandleMessage(message) {
     if(this.channels.includes(message.channel.name)) {
-      this.log.Info(`Incoming message "${message.id.substring(0, 5)}"`);
+      const id = message.id.substring(message.id.length - 5);
+      this.log.Info(`Incoming message "${id}"`);
       const source = await this.sources.Get(message.content);
       if(source) {
-        this.log.Info(`Adding reactions to "${message.id.substring(0, 5)}"`);
+        this.log.Info(`Adding reactions to "${id}"`);
         await source.React(message);
       }
     }
