@@ -25,4 +25,8 @@ module.exports = class ReactionsController {
       }
     }
   }
+
+  async HandlePast(client) {
+    // const channels = client.channels.find((channel) => )
+  }
 }

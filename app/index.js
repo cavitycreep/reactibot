@@ -28,6 +28,9 @@ const main = () => {
   });
 
   client.login(process.env.DISCORD_TOKEN);
+
+  reactions.HandlePast(client);
+
   app.listen(process.env.PORT || 8080);
 };
 

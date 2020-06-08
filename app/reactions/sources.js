@@ -43,10 +43,10 @@ module.exports = class Sources {
     async Get(content) {
       await this.Update();
       const source = this.data.find(({name}) => {
-        const lowerContent = content.toLowerCase();
-        const contentWithSpaces = lowerContent.startsWith(name);
-        const contentWithoutSpaces = lowerContent.startsWith(name.replace(" ", ""));
-        return contentWithSpaces || contentWithoutSpaces;
+        const nameWithoutSpaces = name.replace(" ", "");
+        const pattern = new RegExp(`^\\W+(${name}|${nameWithoutSpaces})`, "gi");
+        console.log(pattern, content, name);
+        return content && pattern.test(content);
       });
       if(source) {
         source.React = async (message) => {
