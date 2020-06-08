@@ -45,7 +45,6 @@ module.exports = class Sources {
       const source = this.data.find(({name}) => {
         const nameWithoutSpaces = name.replace(" ", "");
         const pattern = new RegExp(`^\\W+(${name}|${nameWithoutSpaces})`, "gi");
-        console.log(pattern, content, name);
         return content && pattern.test(content);
       });
       if(source) {
