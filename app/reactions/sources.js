@@ -1,11 +1,12 @@
 const moment = require('moment');
 const Spreadsheet = require("./spreadsheet");
+const { EMOJI_MEDAL } = require("../utils/constants");
 
 
 module.exports = class Sources {
     constructor() {
       this.spreadsheet = new Spreadsheet(process.env.GOOGLE_SHEET_ID)
-      this.updatedAt = moment().unix();
+      this.updatedAt = moment().valueOf();
       this.data = [];
     }
 
@@ -35,7 +36,7 @@ module.exports = class Sources {
           });
         }
 
-        this.updatedAt = moment().unix();
+        this.updatedAt = moment().valueOf();
         this.data = names;
       }
     }
@@ -50,7 +51,7 @@ module.exports = class Sources {
       if(source) {
         source.React = async (message) => {
           Promise.all([
-            message.react("🎖"),
+            message.react(EMOJI_MEDAL),
             message.react(source.reaction),
           ]);
         };
